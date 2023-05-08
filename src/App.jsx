@@ -12,8 +12,11 @@ const App = () => {
   return (
     <>
       <h1>User Management System</h1>
+      {
+        users.map( user => <h3 key={user?.id}>{user.name}</h3>)
+      }
     </>
   );
 };
 
-export default App;
+export default App; 
