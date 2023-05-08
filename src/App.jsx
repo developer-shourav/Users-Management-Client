@@ -12,8 +12,9 @@ const App = () => {
   return (
     <>
       <h1>User Management System</h1>
+      <h2>Total Users:{users?.length}</h2>
       {
-        users.map( user => <h3 key={user?.id}>{user.name}</h3>)
+        users.map( user => <h3 key={user?.id}>{user.id} {user.name}</h3>)
       }
     </>
   );
