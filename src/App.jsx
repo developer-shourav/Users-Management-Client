@@ -3,6 +3,10 @@ import './App.css'
 const App = () => {
   const [users, setUsers] = useState([]);
 
+  const handleAddUser = event => {
+    event.preventDefault();
+    console.log('Hoiche re vai vaiche');
+  }
 
   useEffect(() => {
     fetch('http://localhost:8000/users')
@@ -13,6 +17,15 @@ const App = () => {
     <>
       <h1>User Management System</h1>
       <h2>Total Users:{users?.length}</h2>
+
+      <form onClick={handleAddUser}>
+        <input type="text" name="name" placeholder='Your Name' id="" />
+        <br />
+        <input type="number" name="age" placeholder='Your Age' id="" />
+        <br />
+        <input type="submit" value="Add User" />
+
+      </form>
 
 
       
