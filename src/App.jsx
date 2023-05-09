@@ -15,14 +15,14 @@ const App = () => {
     fetch('http://localhost:8000/users', {
       method:'POST',
       headers:{
-        'content-type':'application/json'
+        'content-type' : 'application/json'
       },
       body: JSON.stringify(user)
     })
     .then( res => res.json())
-    .then( data => {
-      const newTotalUsers = [...users, data];
-      setUsers(newTotalUsers)
+    .then(data => {
+      const newAllUsers = [...users , data];
+      setUsers(newAllUsers)
       form.reset()
     })
   }
