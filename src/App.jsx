@@ -5,7 +5,14 @@ const App = () => {
 
   const handleAddUser = event => {
     event.preventDefault();
-    console.log('Hoiche re vai vaiche');
+    const form = event.target;
+    const name = form.name;
+    const age = form.age.value;
+    const user = {
+      name,
+      age
+    }
+    console.log(user);
   }
 
   useEffect(() => {
@@ -18,7 +25,7 @@ const App = () => {
       <h1>User Management System</h1>
       <h2>Total Users:{users?.length}</h2>
 
-      <form onClick={handleAddUser}>
+      <form onSubmit={handleAddUser}>
         <input type="text" name="name" placeholder='Your Name' id="" />
         <br />
         <input type="number" name="age" placeholder='Your Age' id="" />
