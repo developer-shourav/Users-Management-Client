@@ -6,13 +6,25 @@ const App = () => {
   const handleAddUser = event => {
     event.preventDefault();
     const form = event.target;
-    const name = form.name;
-    const age = form.age.value;
+    const name = form.name.value;
+    const age = parseInt(form.age.value);
     const user = {
       name,
       age
-    }
-    console.log(user);
+    };
+    fetch('http://localhost:8000/users', {
+      method:'POST',
+      headers:{
+        'content-type':'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+    .then( res => res.json())
+    .then( data => {
+      const newTotalUsers = [...users, data];
+      setUsers(newTotalUsers)
+      form.reset()
+    })
   }
 
   useEffect(() => {
@@ -40,7 +52,7 @@ const App = () => {
 
 
       {
-        users.map( user => <h3 key={user?.id}>{user.id} : {user.name}</h3>)
+        users.map( user => <h3 key={user?.id}>{user?.id} : {user?.name}, age: {user?.age}</h3>)
       }
     </>
   );
